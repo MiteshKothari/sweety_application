@@ -1,0 +1,1631 @@
+Started GET "/" for ::1 at 2019-08-27 23:44:53 +0530
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.3) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (19.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20190824171928)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "phone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190824171928_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190824171928"]]
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateReadings (20190824172000)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "readings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "reading" integer, "date" datetime, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190824172000_create_readings.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_readings_on_user_id" ON "readings" ("user_id")[0m
+  ↳ db/migrate/20190824172000_create_readings.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "date_index" ON "readings" ("date")[0m
+  ↳ db/migrate/20190824172000_create_readings.rb:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190824172000"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-08-27 18:15:14.316577"], ["updated_at", "2019-08-27 18:15:14.316577"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2019-08-27 23:45:21 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/mkothari/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:19
+  Rendered users/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 5430ms (Views: 5413.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for ::1 at 2019-08-27 23:45:43 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PgzcvbE3O/KCErS1lSl+alRKdSoufxQe2xKmzRs0mCG9USCQljwpHGhjgkVOdI2PyjzIgSXdLTnHAELRyqKGNw==", "user"=>{"name"=>"Mitesh", "email"=>"mitesh.kothari2709@gmail.com", "phone"=>"8867953549"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Mitesh"], ["email", "mitesh.kothari2709@gmail.com"], ["phone", "8867953549"], ["created_at", "2019-08-27 18:15:43.356277"], ["updated_at", "2019-08-27 18:15:43.356277"]]
+  ↳ app/controllers/users_controller.rb:20
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 13ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-27 23:45:43 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 161ms (Views: 127.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/1?report_type=daily&date=Thu+Aug+08+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:46:17 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"daily", "date"=>"Thu Aug 08 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-07 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-07 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-07 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 156ms (Views: 151.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1?report_type=daily&date=Thu+Aug+08+2019+01%3A10%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:46:30 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"daily", "date"=>"Thu Aug 08 2019 01:10:00 GMT+0530 (India Standard Time)", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-07 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-07 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-07 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 125ms (Views: 121.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1?report_type=monthly&date=Thu+Aug+08+2019+01%3A10%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:46:38 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"monthly", "date"=>"Thu Aug 08 2019 01:10:00 GMT+0530 (India Standard Time)", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 157ms (Views: 151.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for ::1 at 2019-08-27 23:46:45 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:19
+  Rendered users/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 117ms (Views: 115.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-27 23:46:53 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 148ms (Views: 143.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-27 23:46:54 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 114ms (Views: 109.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-27 23:47:31 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ii7CxPMinS3iUQX+mUf6s25ASleVU4/otJ9nXLztWtVPW+xTqTQoi5fm9qQjc42JoKi5HPBWqXLQy9xc2C97OQ==", "reading"=>{"reading"=>"10", "user_id"=>"1"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.5ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 10], ["date", "2019-08-26 18:30:00"], ["user_id", 1], ["created_at", "2019-08-27 18:17:31.861110"], ["updated_at", "2019-08-27 18:17:31.861110"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 14ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-27 23:47:31 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 109ms (Views: 105.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-27 23:47:39 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"N1YA4uJ4cDG8zl56BxYbYklRVemwGr6YqOK2DZrn2VBaIy51uG7Fl8l5rSC9ImxYh7mmotUfmALMtg0N/iX4vA==", "reading"=>{"reading"=>"20", "user_id"=>"1"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.3ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 20], ["date", "2019-08-26 18:30:00"], ["user_id", 1], ["created_at", "2019-08-27 18:17:39.289323"], ["updated_at", "2019-08-27 18:17:39.289323"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 6ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-27 23:47:39 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 144ms (Views: 140.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1?report_type=daily&date=Thu+Aug+01+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:47:49 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"daily", "date"=>"Thu Aug 01 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-07-31 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-07-31 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-07-31 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 115ms (Views: 110.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1?report_type=from_date&date=Thu+Aug+01+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:48:02 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"from_date", "date"=>"Thu Aug 01 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 146ms (Views: 141.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1?report_type=monthly&date=Thu+Aug+01+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:48:10 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"monthly", "date"=>"Thu Aug 01 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 114ms (Views: 109.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-27 23:48:28 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2Yr9IowQJtMX1B90OUgUDpYUQd5OzK5MRIaEI5X4nku0/9O11gaTdWJj7C6DfGM0WPyylSvJiNYg0j8j8Tq/pw==", "reading"=>{"reading"=>"15", "user_id"=>"1"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.3ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 15], ["date", "2019-08-26 18:30:00"], ["user_id", 1], ["created_at", "2019-08-27 18:18:28.184915"], ["updated_at", "2019-08-27 18:18:28.184915"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 5ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-27 23:48:28 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 140ms (Views: 137.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-27 23:48:32 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TnBDrem/fVnTsah/zoOz+eKkzhOd4dUUuC2HHZMZFlojBW06s6nI/6YGWyV0t8TDLEw9WPjk847ceTwd99s3tg==", "reading"=>{"reading"=>"24", "user_id"=>"1"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.5ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 24], ["date", "2019-08-26 18:30:00"], ["user_id", 1], ["created_at", "2019-08-27 18:18:32.995294"], ["updated_at", "2019-08-27 18:18:32.995294"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 7ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-27 23:48:33 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 119ms (Views: 116.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-27 23:48:38 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qsRwMiFZLBX0NjwGxo5UEdh3PPIqfNR0DfP41eyglKDHsV6le0+Zs4GBz1x8uiMrFp/PuU958u5pp0PViGK1TA==", "reading"=>{"reading"=>"43", "user_id"=>"1"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-27 23:48:38 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 148ms (Views: 144.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-27 23:48:45 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y0XV5p/bCsW//aKFPDOCt2oXbHnbA+P8VDWJvuPGryCmMPtxxc2/Y8pKUd+GB/WNpP+fMr4GxWYwYTK+hwSOzA==", "reading"=>{"reading"=>"234", "user_id"=>"1"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-27 23:48:45 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 107ms (Views: 104.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1?report_type=daily&date=Tue+Aug+27+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:48:53 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"daily", "date"=>"Tue Aug 27 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 143ms (Views: 139.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-08-27 23:49:28 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:19
+  Rendered users/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 128ms (Views: 126.7ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/users" for ::1 at 2019-08-27 23:49:51 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ANk5kGU7qzj1xte414E4jHTtvFm6S+Q6yXoEk4xqfh+DhMW9QjC51h+34UgM3Mtp6psB8rHp3R3VaOCPXfxgCQ==", "user"=>{"name"=>"Vimlesh", "email"=>"vimlesh@gmail.com", "phone"=>"84848484848"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Vimlesh"], ["email", "vimlesh@gmail.com"], ["phone", "84848484848"], ["created_at", "2019-08-27 18:19:51.743001"], ["updated_at", "2019-08-27 18:19:51.743001"]]
+  ↳ app/controllers/users_controller.rb:20
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 4ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-27 23:49:51 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 145ms (Views: 141.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-27 23:50:27 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"I6+EBRIzRSZDXjRW8E8KCBEUF016zfvHZMVj6+lY3dJO2qqSSCXwgDbpxwxKe30y3/zkBh/I3V0AkdjrjZr8Pg==", "reading"=>{"reading"=>"10", "user_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.4ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 10], ["date", "2019-08-26 18:30:00"], ["user_id", 2], ["created_at", "2019-08-27 18:20:27.591370"], ["updated_at", "2019-08-27 18:20:27.591370"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 6ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-27 23:50:27 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 123ms (Views: 120.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/2?report_type=daily&date=Tue+Aug+27+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:50:39 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"daily", "date"=>"Tue Aug 27 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 153ms (Views: 149.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-27 23:51:08 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DtXC1+4a+0cf4Q286byajVa5BoN7sej/8UqugZKsu+5joOxAtAxO4WpW/uZTiO23mFH1yB60zmWVHhWB9m6aAg==", "reading"=>{"reading"=>"431", "user_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.3ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 431], ["date", "2019-08-26 18:30:00"], ["user_id", 2], ["created_at", "2019-08-27 18:21:08.615658"], ["updated_at", "2019-08-27 18:21:08.615658"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 6ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-27 23:51:08 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 121ms (Views: 118.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/2?report_type=from_date&date=Tue+Aug+27+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:51:23 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"from_date", "date"=>"Tue Aug 27 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 151ms (Views: 146.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/2?report_type=from_date&date=Tue+Aug+27+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:52:23 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"from_date", "date"=>"Tue Aug 27 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 122ms (Views: 117.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/" for ::1 at 2019-08-27 23:53:17 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:19
+  Rendered users/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 146ms (Views: 144.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-27 23:53:21 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 121ms (Views: 116.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/" for ::1 at 2019-08-27 23:53:24 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:19
+  Rendered users/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 149ms (Views: 147.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-27 23:53:36 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 121ms (Views: 115.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/" for ::1 at 2019-08-27 23:54:49 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:19
+  Rendered users/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 189ms (Views: 187.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-27 23:54:57 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 154ms (Views: 147.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-27 23:55:30 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"D4Pu59vNX4DtvW40xt1DmH9jmmTb3bdXzGTFjuInQdZi9sBwgdvqJpgKnW586TSisYtpL77Ykc2oMH6OhuVgOg==", "reading"=>{"reading"=>"15", "user_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.3ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 15], ["date", "2019-08-26 18:30:00"], ["user_id", 2], ["created_at", "2019-08-27 18:25:30.684872"], ["updated_at", "2019-08-27 18:25:30.684872"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 7ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-27 23:55:30 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 186ms (Views: 182.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-27 23:55:36 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0BNXlBySzVX9be3OmUBAVnEVtKE6W0+0Ad6e2E6aPoS9ZnkDRoR484jaHpQjdDdsv/1H6l9eaS5liiXYKlgfaA==", "reading"=>{"reading"=>"12", "user_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.4ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 12], ["date", "2019-08-26 18:30:00"], ["user_id", 2], ["created_at", "2019-08-27 18:25:36.857496"], ["updated_at", "2019-08-27 18:25:36.857496"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 6ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-27 23:55:36 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 154ms (Views: 149.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-27 23:55:40 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VNb82mvftLMqCuYfApJA0l/k3L8GSyOjmb4cPHX4Vdc5o9JNMckBFV+9FUW4pjfokQwv9GNOBTn96qc8ETp0Ow==", "reading"=>{"reading"=>"12", "user_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 5ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-27 23:55:40 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 222ms (Views: 218.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-27 23:55:44 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9SdXtSIosVWYKm5fCRY0M5mvpR4xoaRO7A/tx85uuOyYUnkieD4E8+2dnQWzIkMJV0dWVVSkgtSIW1bHqqyZAA==", "reading"=>{"reading"=>"23", "user_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-27 23:55:44 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 150ms (Views: 144.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-27 23:55:55 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jBva7vYVMBJFY06TjuFILnaNj7gSLTzQM+DAaJNBV0nhbvR5rAOFtDDUvck01T8UuGV883coGkpXtHto94N2pQ==", "reading"=>{"reading"=>"234", "user_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-27 23:55:55 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 219ms (Views: 214.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/2?report_type=monthly&date=Tue+Aug+27+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:56:18 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"monthly", "date"=>"Tue Aug 27 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 133ms (Views: 128.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/2?report_type=from_date&date=Mon+Aug+26+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:56:27 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"from_date", "date"=>"Mon Aug 26 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 169ms (Views: 163.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/2?report_type=from_date&date=Mon+Aug+26+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:56:37 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"from_date", "date"=>"Mon Aug 26 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 128ms (Views: 124.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/2?report_type=from_date&date=Mon+Aug+26+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:57:09 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"from_date", "date"=>"Mon Aug 26 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 163ms (Views: 159.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/2?report_type=from_date&date=Mon+Aug+26+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-27 23:57:17 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"from_date", "date"=>"Mon Aug 26 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 143ms (Views: 136.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/" for ::1 at 2019-08-27 23:58:12 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:19
+  Rendered users/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 155ms (Views: 153.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-27 23:58:22 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 118ms (Views: 113.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-08-28 12:30:15 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:19
+  Rendered users/index.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 389ms (Views: 376.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2019-08-29 00:35:18 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/mkothari/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:19
+  Rendered users/index.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 3298ms (Views: 3282.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-29 00:35:25 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 142ms (Views: 123.5ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-29 00:35:35 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IlhHCCDRkMkVHGTz6mjxx1LxUuDJsqjZZkKQi4S0wFRPLWmfesclb2Crl6lQXIb9nBmhq6y3jkMCFiuL4HbhuA==", "reading"=>{"reading"=>"10", "user_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (1.1ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 10], ["date", "2019-08-28 18:30:00"], ["user_id", 2], ["created_at", "2019-08-28 19:05:35.476843"], ["updated_at", "2019-08-28 19:05:35.476843"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 14ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-29 00:35:35 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 133ms (Views: 129.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-29 00:35:44 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"G2HfPk2E393mao6TGrVyx4IFYMS1lztPDvAWRrd0YR92FPGpF5Jqe5PdfcmggQX9TO2Tj9CSHdVqpK1G07ZA8w==", "reading"=>{"reading"=>"15", "user_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.4ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 15], ["date", "2019-08-28 18:30:00"], ["user_id", 2], ["created_at", "2019-08-28 19:05:44.071252"], ["updated_at", "2019-08-28 19:05:44.071252"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 7ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-29 00:35:44 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 144ms (Views: 139.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-29 00:35:50 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rPMb9qsLKMvmDrUNAiUwZxzBDb/EeL5SJQItwQmJ8enBhjVh8R2dbZO5Rle4EUdd0in+9KF9mMhBVpbBbUvQBQ==", "reading"=>{"reading"=>"12", "user_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.8ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 12], ["date", "2019-08-28 18:30:00"], ["user_id", 2], ["created_at", "2019-08-28 19:05:50.192431"], ["updated_at", "2019-08-28 19:05:50.192431"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 7ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-29 00:35:50 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 139ms (Views: 135.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-29 00:35:55 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tjRbuwxF//CB/7cS6pPtruA2p9scnNAmDRo3fBRRVa7bQXUsVlNKVvRIREhQp5qULt5UkHmZ9rxpTox8cJN0Qg==", "reading"=>{"reading"=>"24", "user_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.6ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 24], ["date", "2019-08-28 18:30:00"], ["user_id", 2], ["created_at", "2019-08-28 19:05:55.114791"], ["updated_at", "2019-08-28 19:05:55.114791"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 7ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-29 00:35:55 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 135ms (Views: 132.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/2?report_type=daily&date=Thu+Aug+29+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-29 00:36:08 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"daily", "date"=>"Thu Aug 29 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 139ms (Views: 133.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/2?report_type=daily&date=Wed+Aug+28+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-29 00:36:20 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"daily", "date"=>"Wed Aug 28 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-27 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-27 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-27 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 137ms (Views: 132.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/2?report_type=daily&date=Tue+Aug+27+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-29 00:36:30 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"daily", "date"=>"Tue Aug 27 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-26 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 149ms (Views: 144.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2019-08-29 00:41:00 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/mkothari/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:19
+  Rendered users/index.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 557ms (Views: 542.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-29 00:41:03 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 187ms (Views: 161.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/2?report_type=monthly&date=Thu+Aug+08+2019+01%3A10%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-29 00:41:13 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"monthly", "date"=>"Thu Aug 08 2019 01:10:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 211ms (Views: 206.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/2?report_type=from_date&date=Wed+Aug+14+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-29 00:41:22 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"from_date", "date"=>"Wed Aug 14 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 154ms (Views: 149.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/2?report_type=from_date&date=Wed+Aug+28+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-29 00:41:27 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"from_date", "date"=>"Wed Aug 28 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 203ms (Views: 198.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/2?report_type=monthly&date=Tue+Aug+27+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-29 01:19:28 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"monthly", "date"=>"Tue Aug 27 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 2]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 158ms (Views: 152.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-29 01:19:40 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 170ms (Views: 165.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-29 01:29:08 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 2], ["date", "2019-08-28 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 212ms (Views: 202.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2019-08-31 13:08:34 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/mkothari/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.3) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20190829171928)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20190829171928_create_users.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "phone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190829171928_create_users.rb:3
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20190829171928)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "phone" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190829171928_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190829171928"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateReadings (20190829172000)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "readings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "reading" integer, "date" datetime, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190829172000_create_readings.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_readings_on_user_id" ON "readings" ("user_id")[0m
+  ↳ db/migrate/20190829172000_create_readings.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "date_index" ON "readings" ("date")[0m
+  ↳ db/migrate/20190829172000_create_readings.rb:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190829172000"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-08-31 07:39:11.756371"], ["updated_at", "2019-08-31 07:39:11.756371"]]
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2019-08-31 13:09:21 +0530
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/mkothari/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:19
+  Rendered users/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 568ms (Views: 554.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for ::1 at 2019-08-31 13:09:32 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oBxdVtngKSakbPy8NnQvsMRc8bliZJDzs7jeH+RYQQAjQaF7/us7yE4dykztKdxVWipMEmnGqdSvqjoDNc5fFg==", "user"=>{"name"=>"Mitesh", "email"=>"mitesh.kothari2709@gmail.com", "phone"=>"8867953549"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Mitesh"], ["email", "mitesh.kothari2709@gmail.com"], ["phone", "8867953549"], ["created_at", "2019-08-31 07:39:32.931325"], ["updated_at", "2019-08-31 07:39:32.931325"]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:17
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 14ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-31 13:09:32 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 196ms (Views: 175.8ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-31 13:09:40 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wQu3ciEBVEgD9iP260Dc4YRAnjJA+R2RTVmcUOEszcWsfpnlexfh7nZB0KxRdKvbSqhteSX8OwspDSdQhe7sKQ==", "reading"=>{"reading"=>"15", "user_id"=>"1"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.6ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 15], ["date", "2019-08-30 18:30:00"], ["user_id", 1], ["created_at", "2019-08-31 07:39:40.954529"], ["updated_at", "2019-08-31 07:39:40.954529"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 13ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-31 13:09:40 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 218ms (Views: 214.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-31 13:09:47 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ujbAGegT7oH5eQY5PozL9oIBGK8jPxHby618s26Jh0XXQ+6OsgVbJ4zO9WOEuLzMTOnr5EY6N0Gv+cezCkumqQ==", "reading"=>{"reading"=>"24", "user_id"=>"1"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.4ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 24], ["date", "2019-08-30 18:30:00"], ["user_id", 1], ["created_at", "2019-08-31 07:39:47.746799"], ["updated_at", "2019-08-31 07:39:47.746799"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 8ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-31 13:09:47 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 163ms (Views: 155.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/readings" for ::1 at 2019-08-31 13:09:51 +0530
+Processing by ReadingsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cgT86rbPnXqnHGsT629LhafmnFWhZDZFmaDPSZAVWuYfcdJ97Nko3NKrmElRWzy/aQ5vHsRhEN/99HRJ9Nd7Cg==", "reading"=>{"reading"=>"20", "user_id"=>"1"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/reading.rb:14
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[36mReading Create (0.4ms)[0m  [1m[32mINSERT INTO "readings" ("reading", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["reading", 20], ["date", "2019-08-30 18:30:00"], ["user_id", 1], ["created_at", "2019-08-31 07:39:51.763074"], ["updated_at", "2019-08-31 07:39:51.763074"]]
+  ↳ app/controllers/readings_controller.rb:10
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/readings_controller.rb:10
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 6ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/users/1" for ::1 at 2019-08-31 13:09:51 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 204ms (Views: 199.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1?report_type=monthly&date=Wed+Aug+28+2019+00%3A00%3A00+GMT%2B0530+%28India+Standard+Time%29" for ::1 at 2019-08-31 13:09:58 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"report_type"=>"monthly", "date"=>"Wed Aug 28 2019 00:00:00 GMT+0530 (India Standard Time)", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MIN("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:16
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("readings"."reading") FROM "readings" WHERE "readings"."user_id" = ? AND (date >= '2019-07-31 18:30:00' and date <= '2019-08-30 18:30:00')[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/views/users/show.html.erb:6
+  [1m[36mReading Load (0.1ms)[0m  [1m[34mSELECT "readings".* FROM "readings" WHERE "readings"."user_id" = ? AND "readings"."date" = ?[0m  [["user_id", 1], ["date", "2019-08-30 18:30:00"]]
+  ↳ app/views/users/show.html.erb:51
+  Rendered users/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 137ms (Views: 131.7ms | ActiveRecord: 0.7ms)
+
+
